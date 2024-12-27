@@ -3,16 +3,24 @@
 ## Contents
 
 1. [Introduction](#introduction)
-2. [Database preparation](#database-preparation)
-3. [Classification](#classification)
-4. [Reformatting](#reformatting)
+2. [Installation](#installation)
+3. [Database preparation](#database-preparation)
+4. [Classification](#classification)
+5. [Reformatting](#reformatting)
+6. [Results](#results)
 
 ## Introduction
-[Metabuli](https://github.com/steineggerlab/Metabuli) combines advatanges of amino acid and nucleotide sequence search. 
-Please refer to the [Metabuli repository](https://github.com/steineggerlab/Metabuli) to install the software.
-Pre-built binaries and bioconda packages are available.
+***[Metabuli](https://github.com/steineggerlab/Metabuli)*** classifies metagenomic reads by comparing them to reference genomes. You can use Metabuli to profile the taxonomic composition of your samples or to detect specific (pathogenic) species. 
 
-We also provide [Metabuli App](http://github.com/steineggerlab/Metabuli-App) for user-friendly graphical interface to run the taxonomic classification and result visualization.
+***Sensitive and Specific.*** Metabuli uses a novel k-mer structure, called *metamer*, to analyze both amino acid (AA) and DNA sequences. It leverages AA conservation for sensitive homology detection and DNA mutations for specific differentiation between closely related taxa.
+
+***A laptop is enough.*** Metabuli operates within user-specified RAM limits, allowing it to search any database that fits in storage. A PC with 8 GiB of RAM is sufficient for most analyses.
+
+***A few clicks are enough.*** Metabuli App is now available [here](https://github.com/steineggerlab/Metabuli-App). With just a few clicks, you can run Metabuli and browse the results with Sankey and Krona plots on your PC.
+
+***Short reads, long reads, and contigs.*** Metabuli can classify all types of sequences.
+
+---
 
 For more details, please see
 [Nature Methods](https://www.nature.com/articles/s41592-024-02273-y), 
@@ -21,12 +29,24 @@ For more details, please see
 
 Please cite: [Kim J, Steinegger M. Metabuli: sensitive and specific metagenomic classification via joint analysis of amino acid and DNA. Nature Methods (2024).](https://doi.org/10.1038/s41592-024-02273-y)
 
+## Installation
+Please refer to the [Metabuli repository](https://github.com/steineggerlab/Metabuli) to install the software.
+Pre-built binaries and bioconda packages are available.
+You don't need any other dependencies if you use a [pre-built database](https://hulk.mmseqs.com/jaebeom/vmr39.4/) to reproduce the results.
+
+---
+
+We also provide [Metabuli App](http://github.com/steineggerlab/Metabuli-App) for user-friendly graphical interface to run the taxonomic classification and result visualization. But it is not used for this challenge.
+
+
+
 ## Database preparation
 You can download the database used for this challenge [here](https://hulk.mmseqs.com/jaebeom/vmr39.4/).
 It was built using genbank genomes and MSL39.4 taxonomy.
 
 
 Please follow the instructions below if you want to build your own database.
+In this case, you need to install `csvtk` and `taxonkit` to prepare the ICTV taxonomy dump files.
 
 ### 1. Download genbank genomes
 ```bash
@@ -74,7 +94,7 @@ You need to merge FASTA files in "ICTV-TaxonomyChallenge/dataset/dataset_challen
 # Default mode
 metabuli classify --seq-mode 1 MERGED_QUERY_FILE DB_DIR RESULT_DIR JOB_ID1 --lineage 1
 
-# Precise mode optimized for Ilumina short reads
+# Precise mode optimized for Ilumina short reads 
 metabuli classify --seq-mode 1 MERGED_QUERY_FILE DB_DIR RESULT_DIR JOB_ID2 --min-score 0.15 --min-sp-score 0.5 --lineage 1
 
 # Precise mode optimized for HiFi long reads
@@ -94,6 +114,24 @@ For this challenge, the scores are printed as scores for each taxon, all taxa al
 metabuli ictv-format JOB_ID_classifications.tsv
 ```
 It will generate a file named "JOB_ID_classifications_ictv.csv".
+
+## Results
+You can find the results following the challenge format in "results" directory.
+Fields without values are left blank, not filled with NA.
+- `default...csv` : Results from the default mode
+  - `--seq-mode 1`
+- `default_0.9...csv` : Results from the default mode with more frequent LCA calculation
+  - `--seq-mode 1 --tie-ratio 0.9`
+- `precise-s...csv` : Results from the precise mode optimized for short reads
+  - `--seq-mode 1 --min-score 0.15 --min-sp-score 0.5`
+- `precise-s_0.9...csv` : Results from the precise mode optimized for short reads with more frequent LCA calculation
+  - `--seq-mode 1 --min-score 0.15 --min-sp-score 0.5 --tie-ratio 0.9`
+- `precise-l...csv` : Results from the precise mode optimized for long reads
+  - `--seq-mode 1 --min-score 0.07 --min-sp-score 0.3`
+- `precise-l_0.9...csv` : Results from the precise mode optimized for long reads with more frequent LCA calculation
+  - `--seq-mode 1 --min-score 0.07 --min-sp-score 0.3 --tie-ratio 0.9`
+
+
 
 
 
