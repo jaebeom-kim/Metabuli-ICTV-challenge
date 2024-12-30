@@ -31,6 +31,7 @@ Please cite: [Kim J, Steinegger M. Metabuli: sensitive and specific metagenomic 
 
 ## Installation
 Please refer to the [Metabuli repository](https://github.com/steineggerlab/Metabuli) to install the software.
+Please use version 1.0.9 to fully reproduce results.
 Pre-built binaries and bioconda packages are available.
 You don't need any other dependencies if you use a [pre-built database](https://hulk.mmseqs.com/jaebeom/vmr39.4/) to reproduce the results.
 
