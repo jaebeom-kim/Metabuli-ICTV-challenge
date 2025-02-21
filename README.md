@@ -114,11 +114,17 @@ For this challenge, the scores are printed as scores for each taxon, all taxa al
 ```bash
 metabuli ictv-format JOB_ID_classifications.tsv
 ```
-It will generate a file named "JOB_ID_classifications_ictv.csv".
+
+It will generate a file named `JOB_ID_classifications_ictv.csv`.
+
+```
+# Run the following command to replace empty fields with "NA" and reformat the file.
+awk -F',' 'BEGIN { OFS="," } { for(i=1; i<=NF; i++) if($i=="") $i="NA"; print }' JOB_ID_classifications_ictv.tsv > FINAL_RESULTS.tsv
+```
 
 ## Results
 You can find the results following the challenge format in "results" directory.
-Fields without values are left blank, not filled with NA.
+Fields without values are filled with "NA".
 - `default...csv` : Results from the default mode
   - `--seq-mode 1`
 - `default_0.9...csv` : Results from the default mode with more frequent LCA calculation
