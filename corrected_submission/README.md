@@ -1,6 +1,4 @@
 # Corrected Submission
-## Fairness of the corrected submission
-
 ## The reason for the corrected submission
 > Summary: Metabuli's database used for the submission included 17,963 out of 19,769 accessions (90.8%) present in `VMR_MSL39.v4_20241106` file, representing 13,253 out of 14,555 known species (91.0%). The missing accession caused impaired accuracies for some viral families in Figure 4 and 5. 
 
@@ -71,3 +69,13 @@ We used the same Metabuli version and classification command as in the previous 
 We compared the classification results obtained using the previous Metabuli database and the new one. Out of six different parameter sets tested, we focused on the default parameters for comparison. 
 
 With the new database, classification results of 4,606 sequences (7.7% of total) differed from those obtained with the previous database. For the changed results, the average confidence scores of classifications were increased from 0.44 to 0.70, indicating that the new database improved the classification quality. Moreover, 1,029 sequences changed from unclassified to classified, while only 145 sequences changed from classified to unclassified.
+
+## Fairness of the corrected submission
+We understand that submitting corrected results after the deadline may raise concerns about fairness. 
+However, we only used GenBank accessions provided in the `VMR_MSL39.v4_20241106` file to build the Metabuli database for the corrected submission.
+The same Metabuli version, database creation commands, and classification commands as in the previous submission were used.
+The taxonomy dump files were also the same as in the previous submission.
+The only difference was the method of retrieving GenBank accessions from `VMR_MSL39.v4_20241106` file and downloading them.
+We believe that the corrected submission is fair, as it adheres to the challenge guidelines and utilizes only the provided data without any external information.
+
+
