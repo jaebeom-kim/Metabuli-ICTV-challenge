@@ -1,14 +1,40 @@
 # Corrected Submission
+## Fairness of the corrected submission
+
 ## The reason for the corrected submission
+> Summary: Metabuli's database used for the submission included 17,963 out of 19,769 accessions (90.8%) present in `VMR_MSL39.v4_20241106` file, representing 13,253 out of 14,555 known species (91.0%). The missing accession caused impaired accuracies for some viral families in Figure 4 and 5. 
+
 ### Some known families were completely missing in Metabuli's database
-While inspecting the Figure 4 of the draft mansucript, I noticed Metabuli showed low accuracies for some viral Families.
+In the Fig. 4 and 5 of the manuscript, Metabuli showed low accuracy for ten families.
+Nine of them have GenBank accessions in `VMR_MSL39.v4_20241106` file except for Polydnaviriformidae.
+However, we found that six of those nine families were completely missing in the Metabuli database used for the submission.
+Below is a table comparing the number of GenBank accessions in `VMR_MSL39.v4_20241106` file and the Metabuli database.
+
+| Family | MSL39.4 | Metabuli DB |
+| :--- | :--- | :--- |
+| Polydnaviriformidae   | 0 | 0 |
+| Abyssoviridae         | 1 | 0 |
+| Pseudoviridae         | 33 | 0 |
+| Belpaoviridae         | 11 | 0 |
+| Rhodogtaviriformidae  | 4 | 0 |
+| Brachygtaviriformidae | 1 | 0 |
+| Bartogtaviriformidae  | 1 | 0 |
+| Metaviridae           | 31 | 2 |
+| Finnlakeviridae       | 1 | 1 |
+| Fuselloviridae        | 9 | 9 |
+
+
+<!-- While inspecting the Figure 4 of the draft mansucript, I noticed Metabuli showed low accuracies for some viral Families.
 For Abyssoviridae, Metaviridae, Pseudoviridae, Belpaoviridae families, the accuracies were zero or near zero.
 I checked those families in `VMR_MSL39.v4_20241106` file and found that they have 1, 31, 33, and 11 Genbank accessions, respectively.
-However, when I checked Metabuli's database used for the submission, I found that 0, 2, 0, and 0 accessions were present for those families, respectively. Afterward, I checked how many 19,769 accessions of `VMR_MSL39.v4_20241106` were present in Metabuli's database and found that only 17,963 (90.8%) accessions were present. This low coverage of the database might have affected the accuracies of Metabuli for some viral families. Therefore, I decided to build a new Metabuli database with higher coverage of `VMR_MSL39.v4_20241106` and submit the results again.
+However, when I checked Metabuli's database used for the submission, I found that 0, 2, 0, and 0 accessions were present for those families, respectively.  -->
+Afterward, we checked how many of 19,769 accessions in `VMR_MSL39.v4_20241106` were present in the Metabuli database and found that only 17,963 (90.8%) accessions were present. This low coverage of the database might have affected the accuracies of Metabuli for some viral families. Therefore, we decided to build a new Metabuli database with higher coverage of `VMR_MSL39.v4_20241106` and submit the results again.
+
 
 ## The reason for low coverage of the previous Metabuli database
-1. I downloaded viral GenBank assemblies using `download_genbank_genomes.sh` script in root directory of this repo. This script downloads files suffixed with `genomic.fna.gz`. Out of all downloaded sequences, only those sequences of accessions present in `VMR_MSL39.v4_20241106` were used to build the database.
-However, the downloaded sequences did not include all accessions present in `VMR_MSL39.v4_20241106`, which caused low coverage of the database.
+1. We downloaded viral GenBank assemblies using the `download_genbank_genomes.sh` script in this repository. The script downloads GenBank files with the suffix `genomic.fna.gz`. From all the downloaded sequences, only those with accessions listed in `VMR_MSL39.v4_20241106` were used to build the database.
+However, not all accessions present in `VMR_MSL39.v4_20241106` were included among the downloaded sequences, which resulted in low database coverage.
+
 2. The `Virus GENBANK accession` column in `VMR_MSL39.v4_20241106` cotains some values in unexpected fomrat, which resulted in failure to retrieve those sequences. 
 
 ## How the new Metabuli database was built
@@ -37,10 +63,11 @@ find DBDIR/library -name "*.fna" > library-files.txt
 metabuli build DBDIR library-files.txt TAXONOMY_DIR/ictv.accession2taxid --taxonomy-path TAXONOMY_DIR
 ```
 
-## Results with the new Metabuli database
-I used the same classification command as in the previous submission to classify the merged query sequences.
+## Classification with the new Metabuli database
+We used the same Metabuli version and classification command as in the previous submission to classify the query sequences.
 
 
 ## Comparison between the previous and new results
-When comparing old and new results with default parameters, 4606 sequences (7.7% of total) were classified differently.
-For those sequences, the average confidence scores of classifications were increased from 0.44 to 0.70, indicating that the new database improved the classification quality. Moreover, 1,029 sequences changed from unclassified to classified, while only 145 sequences changed from classified to unclassified.
+We compared the classification results obtained using the previous Metabuli database and the new one. Out of six different parameter sets tested, we focused on the default parameters for comparison. 
+
+With the new database, classification results of 4,606 sequences (7.7% of total) differed from those obtained with the previous database. For the changed results, the average confidence scores of classifications were increased from 0.44 to 0.70, indicating that the new database improved the classification quality. Moreover, 1,029 sequences changed from unclassified to classified, while only 145 sequences changed from classified to unclassified.
