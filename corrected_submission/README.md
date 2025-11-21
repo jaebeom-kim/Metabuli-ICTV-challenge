@@ -6,11 +6,11 @@
 In the Fig. 4 and 5 of the manuscript, Metabuli showed low accuracy for ten families.
 Nine of them have GenBank accessions in `VMR_MSL39.v4_20241106` file except for Polydnaviriformidae.
 However, we found that six of those nine families were completely missing in the Metabuli database used for the submission.
-Below is a table comparing the number of GenBank accessions in `VMR_MSL39.v4_20241106` file and the Metabuli database.
+For Metaviridae, only 2 out of 31 provided accessions were in the database.
+For those seven families, we summarized the accession count differeneces between `VMR_MSL39.v4_20241106` file and the Metabuli database.
 
 | Family | MSL39.4 | Metabuli DB |
 | :--- | :--- | :--- |
-| Polydnaviriformidae   | 0 | 0 |
 | Abyssoviridae         | 1 | 0 |
 | Pseudoviridae         | 33 | 0 |
 | Belpaoviridae         | 11 | 0 |
@@ -18,8 +18,6 @@ Below is a table comparing the number of GenBank accessions in `VMR_MSL39.v4_202
 | Brachygtaviriformidae | 1 | 0 |
 | Bartogtaviriformidae  | 1 | 0 |
 | Metaviridae           | 31 | 2 |
-| Finnlakeviridae       | 1 | 1 |
-| Fuselloviridae        | 9 | 9 |
 
 
 <!-- While inspecting the Figure 4 of the draft mansucript, I noticed Metabuli showed low accuracies for some viral Families.
@@ -69,6 +67,18 @@ We used the same Metabuli version and classification command as in the previous 
 We compared the classification results obtained using the previous Metabuli database and the new one. Out of six different parameter sets tested, we focused on the default parameters for comparison. 
 
 With the new database, classification results of 4,606 sequences (7.7% of total) differed from those obtained with the previous database. For the changed results, the average confidence scores of classifications were increased from 0.44 to 0.70, indicating that the new database improved the classification quality. Moreover, 1,029 sequences changed from unclassified to classified, while only 145 sequences changed from classified to unclassified.
+
+For the seven families analyzed above, we compared the number of classifications to each family between the previous and new results.
+Average confidence scores are shown in parentheses.
+| Family | Original | Corrected |
+| :--- | :--- | :--- |
+| Abyssoviridae         | 0 | 3   (0.84) |
+| Pseudoviridae         | 0 | 101 (0.80) |
+| Belpaoviridae         | 0 | 33  (0.82) |
+| Rhodogtaviriformidae  | 0  | 348 (0.04) |
+| Brachygtaviriformidae | 0  | 235 (0.02) |
+| Bartogtaviriformidae  | 0  | 69  (0.05) |
+| Metaviridae           | 15 (0.34) | 93  (0.82) |
 
 ## Fairness of the corrected submission
 We understand that submitting corrected results after the deadline may raise concerns about fairness. 
