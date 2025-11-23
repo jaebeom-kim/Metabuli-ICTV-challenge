@@ -1,9 +1,9 @@
 # Corrected Submission
 ## The reason for the corrected submission
-> Summary: Metabuli's database used for the submission included 17,963 out of 19,769 accessions (90.8%) present in `VMR_MSL39.v4_20241106` file, representing 13,253 out of 14,555 known species (91.0%). The missing accession caused impaired accuracies for some viral families in Figure 4 and 5. 
+> Summary: Metabuli's database used for the submission included 17,963 out of 19,769 accessions (90.8%) present in `VMR_MSL39.v4_20241106` file, representing 13,253 out of the 14,558 species with accession records (91.0%). The missing accession caused impaired accuracies for some viral families in Figure 4 and 5. 
 
 ### Some known families were completely missing in Metabuli's database
-In the Fig. 4 and 5 of the manuscript, Metabuli showed low accuracy for ten families.
+In the Fig. 4 and 5 of the manuscript, Metabuli showed low accuracy specifically for ten families.
 Nine of them have GenBank accessions in `VMR_MSL39.v4_20241106` file except for Polydnaviriformidae.
 However, we found that six of those nine families were completely missing in the Metabuli database used for the submission.
 For Metaviridae, only 2 out of 31 provided accessions were in the database.
@@ -66,7 +66,7 @@ We used the same Metabuli version and classification command as in the previous 
 ## Comparison between the previous and new results
 We compared the classification results obtained using the previous Metabuli database and the new one. Out of six different parameter sets tested, we focused on the default parameters for comparison. 
 
-With the new database, classification results of 4,606 sequences (7.7% of total) differed from those obtained with the previous database. For the changed results, the average confidence scores of classifications were increased from 0.44 to 0.70, indicating that the new database improved the classification quality. Moreover, 1,029 sequences changed from unclassified to classified, while only 145 sequences changed from classified to unclassified.
+With the new database, classification results of 4,606 sequences (7.7% of total) differed from those obtained with the previous database. For the changed results, the average confidence scores for classified sequences were increased from 0.44 to 0.70, indicating that the new database improved the classification quality. Moreover, 1,029 sequences changed from unclassified to classified, while only 145 sequences changed from classified to unclassified.
 
 For the seven families analyzed above, we compared the number of classifications to each family between the previous and new results.
 Average confidence scores are shown in parentheses.
